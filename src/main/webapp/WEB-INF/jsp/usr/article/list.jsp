@@ -7,7 +7,7 @@
 <section class="mt-2 text-xl px-4">
 	<div class="mx-auto overflow-x-auto">
 		<div class="badge badge-outline">${articlesCount }개</div>
-		<table class="table-box-1 table" border="1">
+		<table class="table-box-1" border="1">
 			<colgroup>
 				<col style="width: 10%" />
 				<col style="width: 20%" />
@@ -19,10 +19,6 @@
 					<th>번호</th>
 					<th>날짜</th>
 					<th>제목</th>
-					<th>작성자</th>
-					<th>좋아요</th>
-					<th>싫어요</th>
-					<th>조회수</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,16 +28,8 @@
 						<td>${article.id }</td>
 						<td>${article.regDate.substring(0,10) }</td>
 						<td>
-							<a href="detail?id=${article.id }">${article.title }
-							<c:if test="${article.extra__repliesCnt > 0 }">
-								<span style="color: red;">[${article.extra__repliesCnt }]</span>
-							</c:if>
-						</a>
+							<a href="detail?id=${article.id }">${article.title } </a>
 						</td>
-						<td>${article.extra__writer }</td>
-						<td>${article.goodReactionPoint }</td>
-						<td>${article.badReactionPoint }</td>
-						<td>${article.hitCount }</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -66,39 +54,12 @@
 	</div>
 
 
-
-	<!-- 버전2 동적 페이징-->
-	<div class="pagination flex justify-center mt-3">
-		<c:set var="paginationLen" value="3" />
-		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
-		<c:set var="endPage"
-			value="${page +  paginationLen  <= pagination.totalPage ? page + paginationLen : pagination.totalPage}" />
-
-		<c:set var="baseUri" value="?boardId=${boardId}" />
-		<c:set var="baseUri" value="${baseUri}&searchKeywordTypeCode=${param.searchKeywordTypeCode}" />
-		<c:set var="baseUri" value="${baseUri}&searchKeyword=${param.searchKeyword}" />
-
-		<c:if test="${startPage > 1 }">
-			<a class="btn btn-sm" href="?page=1&${baseUri}">1</a>
-			<button class="btn btn-sm btn-disabled">...</button>
-		</c:if>
-
-		<c:forEach begin="${startPage }" end="${endPage }" var="i">
-			<a class="btn btn-sm ${page == i ? 'btn-active' : '' }" href="?page=${i }&${baseUri}">${i }</a>
-		</c:forEach>
-
-		<c:if test="${endPage < pagination.totalPage }">
-			<button class="btn btn-sm btn-disabled">...</button>
-			<a class="btn btn-sm" href="?page=${pagination.totalPage }&${baseUri}">${pagination.totalPage }</a>
-		</c:if>
-
-	</div>
-
 	<!-- 버전1  -->
 	<div class="pagination flex justify-center mt-3">
 		<div class="btn-group">
 
-			<a href="list??boardId=${boardId }&page=1&searchKeywordTypeCode=${param.searchKeywordTypeCode}&searchKeyword=${param.searchKeyword}">맨앞</a>
+			<a
+				href="list??boardId=${boardId }&page=1&searchKeywordTypeCode=${param.searchKeywordTypeCode}&searchKeyword=${param.searchKeyword}">맨앞</a>
 			<c:if test="${page > pagination.pageSize }">
 				<a
 					href="list?boardId=${boardId }&page=${pagination.from - 1}&searchKeywordTypeCode=${param.searchKeywordTypeCode}&searchKeyword=${param.searchKeyword}">◀</a>

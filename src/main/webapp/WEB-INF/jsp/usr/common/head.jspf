@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<html data-theme="autumn">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>${pageTitle }</title>
@@ -37,28 +37,18 @@
 <body>
 	<header>
 		<div class="h-14 flex items-center text-3xl">
-			<a href="/">
-				<img id="logo" src="/resource/logo.png" />
-			</a>
+			<a class="btn" href="/"> HOME </a>
 
 			<!-- 게시판 헤드 -->
 			<div class="flex-grow "></div>
 			<ul class="flex ">
 
-
-				<c:if test="${rq.isLogined()}">
-					<li>
-						<a class="hover:underline" href="/usr/member/myPage">${rq.loginedMemberNickname }님<i
-								class="fa-solid fa-handshake"
-							></i>
-						</a>
-					</li>
-				</c:if>
-
-				<c:if test="${rq.isLogined()}">
+				<!-- 글쓰기 메뉴 -->
+				<c:if test="${fn:contains(pageContext.request.requestURI, '/usr/article')}">
 					<li>
 						<a class="hover:underline" href="../article/write">
 							<i class="fa-solid fa-pen-nib"></i>
+							글쓰기
 						</a>
 					</li>
 				</c:if>
@@ -68,6 +58,7 @@
 					<li>
 						<a class="hover:underline" href="../article/list?boardId=0">
 							<i class="fa-solid fa-table-list"></i>
+							목록
 						</a>
 						<ul>
 							<li>
@@ -80,25 +71,6 @@
 								<a class="hover:underline" href="../article/list?boardId=3&page=1">QnA</a>
 							</li>
 						</ul>
-					</li>
-				</c:if>
-
-				<c:if test="${!rq.isLogined()}">
-					<li>
-						<a class="hover:underline" href="../member/join">
-							<i class="fa-solid fa-user-plus"></i>
-						</a>
-					</li>
-					<li>
-						<a class="hover:underline" href="${rq.loginUri }">LOGIN</a>
-					</li>
-				</c:if>
-
-				<c:if test="${rq.isLogined()}">
-					<li>
-						<a onclick="if(confirm('로그아웃하시겠습니까?') == false) return false;" class="hover:underline"
-							href="/usr/member/doLogout?${rq.logoutUri }"
-						>LOGOUT</a>
 					</li>
 				</c:if>
 			</ul>

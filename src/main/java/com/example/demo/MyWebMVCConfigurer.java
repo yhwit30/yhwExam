@@ -7,8 +7,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.example.demo.interceptor.BeforeActionInterceptor;
-import com.example.demo.interceptor.NeedLoginInterceptor;
-import com.example.demo.interceptor.NeedLogoutInterceptor;
 
 @Configuration
 public class MyWebMVCConfigurer implements WebMvcConfigurer {
@@ -16,10 +14,6 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 	// BeforeActionInterceptor 불러오기(연결)
 	@Autowired
 	BeforeActionInterceptor beforeActionInterceptor;
-	@Autowired
-	NeedLoginInterceptor needLoginInterceptor;
-	@Autowired
-	NeedLogoutInterceptor needLogoutInterceptor;
 
 	// 인터셉터 등록(적용)
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -40,27 +34,7 @@ public class MyWebMVCConfigurer implements WebMvcConfigurer {
 		ir.excludePathPatterns("/resource/**");
 		ir.excludePathPatterns("/error");
 
-		ir = registry.addInterceptor(needLoginInterceptor);
-		ir.addPathPatterns("/usr/article/write");
-		ir.addPathPatterns("/usr/article/doWrite");
-		ir.addPathPatterns("/usr/article/modify");
-		ir.addPathPatterns("/usr/article/doModify");
-		ir.addPathPatterns("/usr/article/doDelete");
-		ir.addPathPatterns("/usr/article/list");
-		ir.addPathPatterns("/usr/article/detail");
-		ir.addPathPatterns("/usr/reactionPoint/doGoodReaction");
-		ir.addPathPatterns("/usr/reactionPoint/doBadReaction");
-
-		ir.addPathPatterns("/usr/reply/doWrite");
-		ir.addPathPatterns("/usr/reply/doModify");
-		ir.addPathPatterns("/usr/reply/doDelete");
-
-		ir = registry.addInterceptor(needLogoutInterceptor);
-		ir.addPathPatterns("/usr/member/login");
-		ir.addPathPatterns("/usr/member/doLogin");
-		ir.addPathPatterns("/usr/member/join");
-		ir.addPathPatterns("/usr/member/doJoin");
-
+		
 	}
 
 }

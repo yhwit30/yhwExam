@@ -36,12 +36,6 @@
 			<table class="write-box table-box-1" border="1">
 				<tbody>
 					<tr>
-						<th>작성자</th>
-						<td>
-							<div>${rq.loginedMember.nickname }</div>
-						</td>
-					</tr>
-					<tr>
 						<th>게시판</th>
 						<td>
 							<select class="select select-ghost w-full max-w-xs" name="boardId">
