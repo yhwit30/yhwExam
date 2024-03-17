@@ -1,0 +1,101 @@
+/* 폰트 */
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'LINESeedKR-Bd';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2')
+		format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+
+html>body {
+	font-family: 'Pretendard-Regular';
+}
+
+/* 커스텀 */
+header>div>ul>li {
+	margin-right: 30px;
+}
+
+/* 표 디자인 */
+.table-box-1 {
+	width: 90%;
+	white-space: nowrap;
+}
+
+.table-box-1>thead tr {
+	background: linear-gradient(to right, #536976, #292e49); /* 로얄블루 색상 */
+}
+
+.table-box-1 th {
+	/* 	background-color: #1d96b2; */
+	/* 	background: linear-gradient(to right, #c0c0aa, #1cefff); */
+	border: 1px solid rgba(255, 0, 0, 0.1);
+	font-weight: normal;
+	font-size: 13px;
+	text-align: left;
+	color: white;
+	box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.table-box-1 td {
+	font-weight: normal;
+	font-size: 14px;
+	border: 1px solid rgba(255, 0, 0, 0.1);
+}
+
+
+
+/* 기본 네비게이션 2차 메뉴 스타일 */
+header>div>ul>li>ul {
+	display: none;
+	position: absolute;
+	background-color: white;
+	z-index: 1;
+}
+
+/* 네비게이션 2차 메뉴 호버 스타일 */
+header>div>ul>li:hover>ul {
+	display: block;
+}
+
+/* 대쉬보드 메뉴바 */
+.side_bar {
+	width: 100px;
+	height: 100%;
+	overflow: auto;
+	position: fixed;
+	border-right: thin solid gold; /* 	색깔 임시로 */
+}
+
+.side_menu>ul>li>a {
+	display: block;
+	padding-right: 10px;
+	padding-left: 5px;
+	padding-top: 10px;
+	/* 	background-color: skyblue; */
+	border-bottom: 1px solid black;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	color: black;
+}
+
+.side_bar_push {
+	margin-left: 100px;
+}
+
+/* 페이지 제목 위치 */
+#pageTitle {
+	left: 105px;
+	position: absolute;
+	top: 35px;
+}
